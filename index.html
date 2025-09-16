@@ -1,51 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academia CT04 - Gramado</title>
-  <style>
-    /* RESET BÁSICO */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Arial', sans-serif; background-color:#121212; color:#f4f4f4; line-height:1.6; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CT04 - Academia Gramado</title>
+<style>
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Arial', sans-serif; background:#111; color:#eee; line-height:1.6; scroll-behavior:smooth; }
 
-    /* HEADER */
-    header { background-color:#1f1f1f; padding:2rem 1rem; text-align:center; border-bottom:4px solid #28a745; }
-    header h1 { font-size:2.5rem; color:#28a745; margin-bottom:0.5rem; }
-    header p { color:#ccc; font-size:1rem; }
+/* CONTAINER CENTRAL */
+.container { max-width:700px; margin:0 auto; padding:2rem; }
 
-    /* APRESENTAÇÃO */
-    .apresentacao { background-color:#1a1a1a; padding:4rem 1rem; text-align:center; }
-    .apresentacao h2 { color:#f8a03f; font-size:2rem; margin-bottom:1rem; }
-    .apresentacao p { max-width:700px; margin:0 auto 2rem auto; font-size:1.1rem; color:#ddd; }
-    .btn-principal { display:inline-block; padding:1rem 2rem; background-color:#28a745; color:#fff; text-decoration:none; font-weight:bold; border-radius:8px; transition:0.3s; }
-    .btn-principal:hover { background-color:#218838; }
+/* HEADER */
+header { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem 1rem; border-bottom:2px solid #444; }
+header h1 { font-size:3rem; color:#fff; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:2px; }
+header p { color:#ccc; font-size:1rem; }
 
-    /* RODAPÉ */
-    footer { background-color:#1f1f1f; padding:2rem 1rem; text-align:center; color:#888; margin-top:2rem; }
-  </style>
+/* NAVIGATION */
+nav { margin-top:1rem; }
+nav a { color:#eee; text-decoration:none; margin:0 1rem; font-weight:bold; transition:0.3s; }
+nav a:hover { color:#fff; }
+
+/* HERO SECTION */
+.hero { text-align:center; padding:6rem 1rem; background:#1a1a1a; border-radius:12px; margin:2rem 0; position:relative; overflow:hidden; }
+.hero h2 { font-size:2.5rem; color:#fff; margin-bottom:1rem; }
+.hero p { font-size:1.2rem; color:#ccc; margin-bottom:2rem; }
+.hero .btn-principal { display:inline-block; padding:1rem 2rem; background:#fff; color:#111; font-weight:bold; border-radius:10px; text-decoration:none; transition:0.3s; position:relative; z-index:1; }
+.hero .btn-principal:hover { background:#ccc; }
+
+/* ANIMAÇÃO DE FUNDO HERO */
+.hero::before {
+  content:"";
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.05) 75%, transparent 75%, transparent);
+  background-size:50px 50px;
+  z-index:0;
+  animation: moveBG 20s linear infinite;
+}
+@keyframes moveBG { 0%{background-position:0 0;} 100%{background-position:1000px 1000px;} }
+
+/* SEÇÃO CARDS */
+.cards { display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; margin:3rem 0; }
+.card { background:#1f1f1f; padding:2rem; border-radius:12px; width:calc(50% - 1rem); text-align:center; transition:0.3s; box-shadow:0 0 20px rgba(0,0,0,0.5); }
+.card:hover { transform:translateY(-10px); box-shadow:0 10px 30px rgba(0,0,0,0.6); }
+.card h3 { margin-bottom:1rem; color:#fff; }
+.card p { color:#ccc; font-size:0.95rem; }
+
+/* RODAPÉ */
+footer { text-align:center; padding:3rem 1rem; border-top:2px solid #444; color:#888; margin-top:2rem; font-size:0.9rem; }
+
+/* RESPONSIVE */
+@media(max-width:768px){ .card{ width:100%; } header h1{ font-size:2.2rem; } .hero h2{ font-size:2rem; } }
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <h1>CT04 - Centro de Treinamento</h1>
-    <p>Rua Roca Sales, 50, Bairro Carniel - Gramado/RS</p>
-    <p>Contato: (54) 99123-4567</p>
-  </header>
+<header class="container">
+<h1>CT04 - Centro de Treinamento</h1>
+<p>Rua Roca Sales, 50, Bairro Carniel - Gramado/RS</p>
+<p>Contato: (54) 99123-4567</p>
+<nav>
+  <a href="#cards">Nossos Treinos</a>
+  <a href="cadastro.html">Cadastrar-se</a>
+</nav>
+</header>
 
-  <!-- APRESENTAÇÃO -->
-  <section class="apresentacao">
-    <h2>Transforme seu corpo e sua mente!</h2>
-    <p>A CT04 é a academia mais nova e moderna de Gramado, equipada para treinos de musculação, funcional e muito mais. Venha conhecer nosso espaço e fazer parte da nossa família fitness!</p>
-    <a href="cadastro.html" class="btn-principal">Quero me matricular</a>
-  </section>
+<section class="hero container">
+<h2>Transforme seu corpo e sua mente</h2>
+<p>Academia moderna, equipada para musculação, funcional, e muito mais. Venha fazer parte da CT04!</p>
+<a href="cadastro.html" class="btn-principal">Matricule-se agora</a>
+</section>
 
-  <!-- RODAPÉ -->
-  <footer>
-    <p>© 2025 CT04 - Todos os direitos reservados.</p>
-    <p>Rua Roca Sales, 50 - Carniel, Gramado/RS | (54) 99123-4567</p>
-  </footer>
+<section id="cards" class="cards container">
+<div class="card">
+<h3>Musculação</h3>
+<p>Treinos completos com acompanhamento de profissionais para ganho de massa e força.</p>
+</div>
+<div class="card">
+<h3>Funcional</h3>
+<p>Exercícios dinâmicos para condicionamento físico, agilidade e resistência.</p>
+</div>
+<div class="card">
+<h3>HIIT</h3>
+<p>Treinos intensos de alta queima calórica, ideais para perda de gordura rápida.</p>
+</div>
+<div class="card">
+<h3>Alongamento</h3>
+<p>Aulas de flexibilidade e mobilidade, prevenindo lesões e melhorando postura.</p>
+</div>
+</section>
+
+<footer class="container">
+<p>© 2025 CT04 - Todos os direitos reservados.</p>
+<p>Rua Roca Sales, 50 - Carniel, Gramado/RS | (54) 99123-4567</p>
+</footer>
 
 </body>
 </html>
