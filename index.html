@@ -9,50 +9,43 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Arial', sans-serif; background:#111; color:#eee; line-height:1.6; scroll-behavior:smooth; }
 
-/* CONTAINER CENTRAL */
+/* CONTAINER */
 .container { max-width:700px; margin:0 auto; padding:2rem; }
 
 /* HEADER */
-header { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem 1rem; border-bottom:2px solid #444; }
-header h1 { font-size:3rem; color:#fff; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:2px; }
+header { text-align:center; padding:2rem 1rem; border-bottom:2px solid #444; }
+header h1 { font-size:3rem; color:#fff; margin-bottom:0.5rem; letter-spacing:2px; text-transform:uppercase; }
 header p { color:#ccc; font-size:1rem; }
-
-/* NAVIGATION */
 nav { margin-top:1rem; }
 nav a { color:#eee; text-decoration:none; margin:0 1rem; font-weight:bold; transition:0.3s; }
 nav a:hover { color:#fff; }
 
-/* HERO SECTION */
-.hero { text-align:center; padding:6rem 1rem; background:#1a1a1a; border-radius:12px; margin:2rem 0; position:relative; overflow:hidden; }
-.hero h2 { font-size:2.5rem; color:#fff; margin-bottom:1rem; }
+/* HERO */
+.hero { text-align:center; padding:6rem 1rem; background:#1a1a1a; border-radius:12px; position:relative; overflow:hidden; margin-top:2rem;}
+.hero h2 { font-size:2.5rem; margin-bottom:1rem; color:#fff; }
 .hero p { font-size:1.2rem; color:#ccc; margin-bottom:2rem; }
 .hero .btn-principal { display:inline-block; padding:1rem 2rem; background:#fff; color:#111; font-weight:bold; border-radius:10px; text-decoration:none; transition:0.3s; position:relative; z-index:1; }
 .hero .btn-principal:hover { background:#ccc; }
+.hero::before { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.05) 75%, transparent 75%, transparent); background-size:50px 50px; z-index:0; animation:moveBG 20s linear infinite;}
+@keyframes moveBG {0%{background-position:0 0;}100%{background-position:1000px 1000px;}}
 
-/* ANIMAÇÃO DE FUNDO HERO */
-.hero::before {
-  content:"";
-  position:absolute;
-  top:0; left:0; width:100%; height:100%;
-  background: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.05) 75%, transparent 75%, transparent);
-  background-size:50px 50px;
-  z-index:0;
-  animation: moveBG 20s linear infinite;
-}
-@keyframes moveBG { 0%{background-position:0 0;} 100%{background-position:1000px 1000px;} }
-
-/* SEÇÃO CARDS */
+/* CARDS */
 .cards { display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; margin:3rem 0; }
-.card { background:#1f1f1f; padding:2rem; border-radius:12px; width:calc(50% - 1rem); text-align:center; transition:0.3s; box-shadow:0 0 20px rgba(0,0,0,0.5); }
-.card:hover { transform:translateY(-10px); box-shadow:0 10px 30px rgba(0,0,0,0.6); }
+.card { background:#1f1f1f; padding:2rem; border-radius:12px; width:calc(50% - 1rem); text-align:center; transition:0.3s; box-shadow:0 0 20px rgba(0,0,0,0.5);}
+.card:hover { transform:translateY(-10px); box-shadow:0 10px 30px rgba(0,0,0,0.6);}
 .card h3 { margin-bottom:1rem; color:#fff; }
 .card p { color:#ccc; font-size:0.95rem; }
+
+/* GALERIA */
+.gallery { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin:3rem 0; }
+.gallery img { width:calc(50% - 1rem); border-radius:12px; transition:0.3s; }
+.gallery img:hover { transform:scale(1.05); }
 
 /* RODAPÉ */
 footer { text-align:center; padding:3rem 1rem; border-top:2px solid #444; color:#888; margin-top:2rem; font-size:0.9rem; }
 
 /* RESPONSIVE */
-@media(max-width:768px){ .card{ width:100%; } header h1{ font-size:2.2rem; } .hero h2{ font-size:2rem; } }
+@media(max-width:768px){ .card, .gallery img{width:100%;} header h1{font-size:2.2rem;} .hero h2{font-size:2rem;} }
 </style>
 </head>
 <body>
@@ -62,34 +55,30 @@ footer { text-align:center; padding:3rem 1rem; border-top:2px solid #444; color:
 <p>Rua Roca Sales, 50, Bairro Carniel - Gramado/RS</p>
 <p>Contato: (54) 99123-4567</p>
 <nav>
-  <a href="#cards">Nossos Treinos</a>
+  <a href="#cards">Treinos</a>
+  <a href="#gallery">Galeria</a>
   <a href="cadastro.html">Cadastrar-se</a>
 </nav>
 </header>
 
 <section class="hero container">
 <h2>Transforme seu corpo e sua mente</h2>
-<p>Academia moderna, equipada para musculação, funcional, e muito mais. Venha fazer parte da CT04!</p>
+<p>Academia moderna, equipada para musculação, funcional, HIIT e muito mais. Faça parte da CT04!</p>
 <a href="cadastro.html" class="btn-principal">Matricule-se agora</a>
 </section>
 
 <section id="cards" class="cards container">
-<div class="card">
-<h3>Musculação</h3>
-<p>Treinos completos com acompanhamento de profissionais para ganho de massa e força.</p>
-</div>
-<div class="card">
-<h3>Funcional</h3>
-<p>Exercícios dinâmicos para condicionamento físico, agilidade e resistência.</p>
-</div>
-<div class="card">
-<h3>HIIT</h3>
-<p>Treinos intensos de alta queima calórica, ideais para perda de gordura rápida.</p>
-</div>
-<div class="card">
-<h3>Alongamento</h3>
-<p>Aulas de flexibilidade e mobilidade, prevenindo lesões e melhorando postura.</p>
-</div>
+<div class="card"><h3>Musculação</h3><p>Treinos completos com acompanhamento de profissionais para ganho de massa e força.</p></div>
+<div class="card"><h3>Funcional</h3><p>Exercícios dinâmicos para condicionamento físico, agilidade e resistência.</p></div>
+<div class="card"><h3>HIIT</h3><p>Treinos intensos de alta queima calórica, ideais para perda de gordura rápida.</p></div>
+<div class="card"><h3>Alongamento</h3><p>Aulas de flexibilidade e mobilidade, prevenindo lesões e melhorando postura.</p></div>
+</section>
+
+<section id="gallery" class="gallery container">
+<img src="https://via.placeholder.com/350x200?text=Academia+1" alt="Academia 1">
+<img src="https://via.placeholder.com/350x200?text=Academia+2" alt="Academia 2">
+<img src="https://via.placeholder.com/350x200?text=Academia+3" alt="Academia 3">
+<img src="https://via.placeholder.com/350x200?text=Academia+4" alt="Academia 4">
 </section>
 
 <footer class="container">
