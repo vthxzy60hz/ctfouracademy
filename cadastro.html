@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - CT04</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Arial', sans-serif; background-color:#121212; color:#f4f4f4; line-height:1.6; }
+
+    header { background-color:#1f1f1f; padding:2rem 1rem; text-align:center; border-bottom:4px solid #28a745; }
+    header h1 { font-size:2.5rem; color:#28a745; margin-bottom:0.5rem; }
+    header p { color:#ccc; font-size:1rem; }
+
+    #cadastro { padding:4rem 1rem; text-align:center; }
+    .container-cadastro { background-color:#1f1f1f; padding:2rem; max-width:500px; margin:0 auto; border-radius:8px; box-shadow:0 0 20px rgba(0,0,0,0.5); }
+    .container-cadastro h2 { margin-bottom:1.5rem; color:#28a745; }
+    .container-cadastro input { width:100%; padding:0.8rem; margin:0.5rem 0; border:none; border-radius:5px; }
+    .container-cadastro button { width:100%; padding:1rem; margin-top:1rem; border:none; border-radius:5px; background-color:#28a745; color:white; font-weight:bold; cursor:pointer; transition:0.3s; }
+    .container-cadastro button:hover { background-color:#218838; }
+
+    footer { background-color:#1f1f1f; padding:2rem 1rem; text-align:center; color:#888; margin-top:2rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Cadastro de Aluno - CT04</h1>
+    <p>Rua Roca Sales, 50, Bairro Carniel - Gramado/RS</p>
+    <p>Contato: (54) 99123-4567</p>
+  </header>
+
+  <!-- FORMULÁRIO DE CADASTRO -->
+  <section id="cadastro">
+    <div class="container-cadastro">
+      <h2>Preencha seus dados</h2>
+      <form id="formCadastro">
+        <input type="text" id="nome" placeholder="Nome completo" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="tel" id="telefone" placeholder="Telefone" required>
+        <input type="date" id="dataNascimento" required>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p>© 2025 CT04 - Todos os direitos reservados.</p>
+    <p>Rua Roca Sales, 50 - Carniel, Gramado/RS | (54) 99123-4567</p>
+  </footer>
+
+  <script>
+    document.getElementById('formCadastro').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const aluno = {
+        nome: document.getElementById('nome').value,
+        email: document.getElementById('email').value,
+        telefone: document.getElementById('telefone').value,
+        dataNascimento: document.getElementById('dataNascimento').value,
+      };
+
+      try {
+        const response = await fetch('http://localhost:3001/api/alunos/adicionar', {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(aluno)
+        });
+
+        if(response.ok){
+          alert('Aluno cadastrado com sucesso!');
+          document.getElementById('formCadastro').reset();
+        } else {
+          alert('Erro ao cadastrar aluno.');
+        }
+      } catch(err){
+        alert('Servidor offline ou erro na conexão.');
+      }
+    });
+  </script>
+</body>
+</html>
